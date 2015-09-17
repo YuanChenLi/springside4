@@ -16,7 +16,7 @@ request.setAttribute("end", end);
 
 <div class="pagination">
 	<ul>
-		 <% if (page.hasPrevious()){%>
+		 <% if (page.hasPreviousPage()){%>
                	<li><a href="?page=1&sortType=${sortType}&${searchParams}">&lt;&lt;</a></li>
                 <li><a href="?page=${current-1}&sortType=${sortType}&${searchParams}">&lt;</a></li>
          <%}else{%>
@@ -35,7 +35,7 @@ request.setAttribute("end", end);
             </c:choose>
         </c:forEach>
 	  
-	  	 <% if (page.hasNext()){%>
+	  	 <% if (page.hasNextPage()){%>
                	<li><a href="?page=${current+1}&sortType=${sortType}&${searchParams}">&gt;</a></li>
                 <li><a href="?page=${page.totalPages}&sortType=${sortType}&${searchParams}">&gt;&gt;</a></li>
          <%}else{%>
