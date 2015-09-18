@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.ycli.testside.common.persistence.DynamicSpecifications;
 import org.ycli.testside.common.persistence.SearchFilter;
 import org.ycli.testside.common.persistence.SearchFilter.Operator;
+import org.ycli.testside.common.service.BaseService;
 import org.ycli.testside.modules.cms.dao.TaskDao;
 import org.ycli.testside.modules.cms.entity.Task;
 
@@ -26,7 +27,7 @@ import org.ycli.testside.modules.cms.entity.Task;
 @Component
 // 类中所有public函数都纳入事务管理的标识.
 @Transactional
-public class TaskService {
+public class TaskService extends BaseService{
 
 	private TaskDao taskDao;
 
@@ -39,7 +40,7 @@ public class TaskService {
 	}
 
 	public void deleteTask(String id) {
-		taskDao.deleteTest(id);
+		taskDao.delete(id);
 	}
 
 	public List<Task> getAllTask() {
@@ -48,6 +49,7 @@ public class TaskService {
 
 	public Page<Task> getUserTask(String userId, Map<String, Object> searchParams, int pageNumber, int pageSize,
 			String sortType) {
+		logger.info("输入的参数为===用户id:{},页码：{}，每页大小：{}",userId, pageNumber, pageSize);
 		PageRequest pageRequest = buildPageRequest(pageNumber, pageSize, sortType);
 		Specification<Task> spec = buildSpecification(userId, searchParams);
 

@@ -6,25 +6,26 @@
 package org.ycli.testside.modules.cms.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 import org.hibernate.validator.constraints.NotBlank;
-import org.ycli.testside.common.persistence.IdEntity;
-import org.ycli.testside.modules.sys.entity.User;
+import org.ycli.testside.common.SysCode;
+import org.ycli.testside.common.persistence.DataEntity;
 
 //JPA标识
 @Entity
 @Table(name = "ycli_task")
-public class Task extends IdEntity {
+@SQLDelete(sql="UPDATE YCLI_TASK SET DEL_FLAG = '" + SysCode.DEL_FLAG_DELETE + "' WHERE id = ?")
+@Where(clause="DEL_FLAG <> '"+SysCode.DEL_FLAG_DELETE+"'")
+public class Task extends DataEntity {
 
 	private static final long serialVersionUID = 1076796553431226470L;
 	
 	private String title;
 	private String description;
-	private User user;
 
 	// JSR303 BeanValidator的校验规则
 	@NotBlank
@@ -42,17 +43,6 @@ public class Task extends IdEntity {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	// JPA 基于USER_ID列的多对一关系定义
-	@ManyToOne
-	@JoinColumn(name = "user_id")
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	@Override

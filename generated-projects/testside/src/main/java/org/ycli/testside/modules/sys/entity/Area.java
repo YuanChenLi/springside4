@@ -26,7 +26,7 @@ import org.ycli.testside.common.persistence.DataEntity;
 //JPA标识
 @Entity
 @Table(name = "sys_area")
-@Where(clause="del_flag='"+SysCode.DEL_FLAG_DELETE+"'")
+@Where(clause="del_flag<>'"+SysCode.DEL_FLAG_DELETE+"'")
 public class Area extends DataEntity {
 
 	private static final long serialVersionUID = -8513728410633091250L;

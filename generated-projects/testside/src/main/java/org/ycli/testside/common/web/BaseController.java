@@ -6,13 +6,13 @@ import java.util.Date;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.time.DateUtils;
-import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.ycli.testside.common.SysCode;
 import org.ycli.testside.modules.sys.service.account.ShiroDbRealm.ShiroUser;
+import org.ycli.testside.modules.sys.utils.UserUtils;
 
 
 /**
@@ -64,8 +64,8 @@ public abstract class BaseController {
 	/**
 	 * 取出Shiro中的当前用户Id.
 	 */
-	protected String getCurrentUserId() {
-		ShiroUser user = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
+	protected String getCurrentUserId(){
+		ShiroUser user = UserUtils.getCurrentUser();
 		return user.id;
 	}
 	

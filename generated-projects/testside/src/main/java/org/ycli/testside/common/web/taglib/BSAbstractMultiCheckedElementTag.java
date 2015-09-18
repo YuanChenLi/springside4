@@ -24,6 +24,10 @@ import org.springframework.web.servlet.tags.form.TagWriter;
  */
 public abstract class BSAbstractMultiCheckedElementTag extends AbstractMultiCheckedElementTag {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3634732712361428586L;
 	private String labelCssClass;
 
 	public void setLabelCssClass(String labelCssClass) {

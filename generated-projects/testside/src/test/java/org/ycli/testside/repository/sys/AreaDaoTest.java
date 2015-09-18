@@ -33,12 +33,20 @@ public class AreaDaoTest extends SpringTransactionalTestCase {
 	
 	@Test
 	public void findByType(){
-		Area area = areaDao.findByType("1");
-//		Page<Area> tasks = areaDao.findAll(new PageRequest(0, 10));
-		assertThat(area.getId()).isEqualTo("1");
+//		Area area = areaDao.findByType("1");
+//		assertThat(area.getId()).isEqualTo("1");
 	}
 	
 	@Test
-	public void testA(){
+	public void save(){
+		Area area = new Area();
+		area.setCode("101010");
+		area.setName("xx区");
+		area.setParent(areaDao.findOne("2"));
+		area.setParentIds("1,");
+		area.setRemarks("1213");
+		area.setType("3");
+		Area area1 = areaDao.save(area);
+		System.out.println("123" + area1);
 	}
 }

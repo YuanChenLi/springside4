@@ -15,7 +15,7 @@ import org.ycli.testside.modules.cms.entity.Task;
 
 public interface TaskDao extends PagingAndSortingRepository<Task, String>, JpaSpecificationExecutor<Task> {
 
-	Page<Task> findByUserId(String id, Pageable pageRequest);
+	Page<Task> findByCreateById(String id, Pageable pageRequest);
 
 	@Modifying
 	@Query("delete from Task task where id=?1")

@@ -5,7 +5,12 @@ create table ycli_task (
 	id varchar(32),
 	title varchar(128) not null,
 	description varchar(255),
-	user_id bigint not null,
+    create_by varchar(64) COMMENT '创建者',
+	create_date datetime COMMENT '创建时间',
+	update_by varchar(64) COMMENT '更新者',
+	update_date datetime COMMENT '更新时间',
+	remarks varchar(255) COMMENT '备注信息',
+	del_flag char(1) DEFAULT '0' NOT NULL COMMENT '删除标记',
     primary key (id)
 );
 

@@ -10,7 +10,6 @@ import java.util.Map;
 import javax.servlet.ServletRequest;
 import javax.validation.Valid;
 
-import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -21,11 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.ycli.testside.common.web.BaseController;
 import org.ycli.testside.common.web.Servlets;
 import org.ycli.testside.modules.cms.entity.Task;
 import org.ycli.testside.modules.cms.service.TaskService;
-import org.ycli.testside.modules.sys.entity.User;
-import org.ycli.testside.modules.sys.service.account.ShiroDbRealm.ShiroUser;
 
 import com.google.common.collect.Maps;
 
@@ -43,7 +41,7 @@ import com.google.common.collect.Maps;
  */
 @Controller
 @RequestMapping(value = "/task")
-public class TaskController {
+public class TaskController extends BaseController{
 
 	private static final String PAGE_SIZE = "3";
 
@@ -84,9 +82,9 @@ public class TaskController {
 
 	@RequestMapping(value = "create", method = RequestMethod.POST)
 	public String create(@Valid Task newTask, RedirectAttributes redirectAttributes) {
-		User user = new User(getCurrentUserId());
-		newTask.setUser(user);
-
+//		User user = new User(getCurrentUserId());
+//		newTask.setUser(user);
+//		
 		taskService.saveTask(newTask);
 		redirectAttributes.addFlashAttribute("message", "创建任务成功");
 		return "redirect:/task/";
@@ -124,11 +122,4 @@ public class TaskController {
 		}
 	}
 
-	/**
-	 * 取出Shiro中的当前用户Id.
-	 */
-	private String getCurrentUserId() {
-		ShiroUser user = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
-		return user.id;
-	}
 }

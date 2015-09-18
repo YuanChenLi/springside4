@@ -16,11 +16,14 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.validator.constraints.Length;
 import org.ycli.testside.common.SysCode;
 import org.ycli.testside.modules.sys.entity.User;
+import org.ycli.testside.modules.sys.service.account.ShiroDbRealm.ShiroUser;
+import org.ycli.testside.modules.sys.utils.UserUtils;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -49,22 +52,24 @@ public abstract class DataEntity extends IdEntity implements Serializable {
 	
 	@PrePersist
 	public void prePersist(){
-//		User user = UserUtils.getUser();
-//		if (StringUtils.isNotBlank(user.getId())){
-//			this.updateBy = user;
-//			this.createBy = user;
-//		}
-//		this.updateDate = new Date();
-//		this.createDate = this.updateDate;
+		ShiroUser shiroUser = UserUtils.getCurrentUser();
+		if (shiroUser != null && StringUtils.isNotBlank(shiroUser.id)){
+			User user = new User(shiroUser.id);
+			this.updateBy = user;
+			this.createBy = user;
+		}
+		this.updateDate = new Date();
+		this.createDate = this.updateDate;
 	}
 	
 	@PreUpdate
 	public void preUpdate(){
-//		User user = UserUtils.getUser();
-//		if (StringUtils.isNotBlank(user.getId())){
-//			this.updateBy = user;
-//		}
-//		this.updateDate = new Date();
+		ShiroUser shiroUser = UserUtils.getCurrentUser();
+		if (shiroUser != null && StringUtils.isNotBlank(shiroUser.id)){
+			User user = new User(shiroUser.id);
+			this.updateBy = user;
+		}
+		this.updateDate = new Date();
 	}
 	
 	@Length(min=0, max=255)

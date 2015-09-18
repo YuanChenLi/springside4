@@ -19,7 +19,7 @@ public class TaskData {
 		Task task = new Task();
 		task.setTitle(randomTitle());
 		User user = new User("1");
-		task.setUser(user);
+		task.setCreateBy(user);
 		return task;
 	}
 

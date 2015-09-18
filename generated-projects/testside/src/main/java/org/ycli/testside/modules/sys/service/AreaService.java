@@ -25,6 +25,8 @@ import org.ycli.testside.modules.sys.entity.Area;
 // 类中所有public函数都纳入事务管理的标识.
 @Transactional
 public class AreaService {
+	
+	@Autowired
 	private AreaDao areaDao;
 
 
@@ -32,8 +34,16 @@ public class AreaService {
 			String sortType) {
 		Specification<Area> spec = buildSpecification(searchParams);
 		PageRequest pageRequest = buildPageRequest(pageNumber, pageSize, sortType);
-
+		
 		return areaDao.findAll(spec, pageRequest);
+	}
+	
+	public Area save(Area area) {
+		return areaDao.save(area);
+	}
+	
+	public Area findById(String areaId) {
+		return areaDao.findOne(areaId);
 	}
 
 	/**
@@ -60,8 +70,8 @@ public class AreaService {
 		return spec;
 	}
 
-	@Autowired
-	public void setAreaDao(AreaDao areaDao) {
-		this.areaDao = areaDao;
-	}
+//	@Autowired
+//	public void setAreaDao(AreaDao areaDao) {
+//		this.areaDao = areaDao;
+//	}
 }

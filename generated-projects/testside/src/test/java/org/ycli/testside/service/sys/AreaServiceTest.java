@@ -34,5 +34,18 @@ public class AreaServiceTest extends SpringTransactionalTestCase {
 		assertThat(areaPage.getContent()).hasSize(2);
 		System.out.println(areaPage.getTotalElements());
 	}
+	
+	@Test
+	public void save(){
+		Area area = new Area();
+		area.setCode("101010");
+		area.setName("xx区");
+		area.setParent(areaService.findById("2"));
+		area.setParentIds("1,");
+		area.setRemarks("1213");
+		area.setType("3");
+		Area area1 = areaService.save(area);
+		System.out.println("123" + area1);
+	}
 
 }
