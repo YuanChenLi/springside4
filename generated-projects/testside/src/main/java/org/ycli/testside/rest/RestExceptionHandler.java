@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import org.springside.modules.beanvalidator.BeanValidators;
-import org.springside.modules.mapper.JsonMapper;
-import org.springside.modules.web.MediaTypes;
+import org.ycli.testside.common.beanvalidator.BeanValidators;
+import org.ycli.testside.common.mapper.JsonMapper;
+import org.ycli.testside.common.web.MediaTypes;
 
 /**
  * 自定义ExceptionHandler，专门处理Restful异常.

@@ -5,16 +5,16 @@
  *******************************************************************************/
 package org.ycli.testside.functional.gui;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.ycli.testside.data.TaskData;
-import org.ycli.testside.entity.Task;
+import org.ycli.testside.dependency.category.Smoke;
+import org.ycli.testside.dependency.data.TaskData;
 import org.ycli.testside.functional.BaseSeleniumTestCase;
-import org.springside.modules.test.category.Smoke;
+import org.ycli.testside.modules.cms.entity.Task;
 
 /**
  * 任务管理的功能测试, 测试页面JavaScript及主要用户故事流程.

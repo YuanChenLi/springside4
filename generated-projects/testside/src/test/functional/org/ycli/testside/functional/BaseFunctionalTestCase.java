@@ -14,10 +14,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.ycli.testside.QuickStartServer;
-import org.springside.modules.test.data.DataFixtures;
-import org.springside.modules.test.jetty.JettyFactory;
-import org.springside.modules.test.spring.Profiles;
-import org.springside.modules.utils.PropertiesLoader;
+import org.ycli.testside.common.utils.PropertiesLoader;
+import org.ycli.testside.dependency.data.DataFixtures;
+import org.ycli.testside.dependency.jetty.JettyFactory;
+import org.ycli.testside.dependency.spring.Profiles;
 
 /**
  * 功能测试基类.

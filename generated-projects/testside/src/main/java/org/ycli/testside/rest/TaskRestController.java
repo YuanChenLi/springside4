@@ -23,10 +23,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
-import org.ycli.testside.entity.Task;
-import org.ycli.testside.service.task.TaskService;
-import org.springside.modules.beanvalidator.BeanValidators;
-import org.springside.modules.web.MediaTypes;
+import org.ycli.testside.common.beanvalidator.BeanValidators;
+import org.ycli.testside.common.web.MediaTypes;
+import org.ycli.testside.modules.cms.entity.Task;
+import org.ycli.testside.modules.cms.service.TaskService;
 
 /**
  * Task的Restful API的Controller.

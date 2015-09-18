@@ -5,7 +5,7 @@
  *******************************************************************************/
 package org.ycli.testside.functional.gui;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -13,8 +13,8 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.ycli.testside.dependency.category.Smoke;
 import org.ycli.testside.functional.BaseSeleniumTestCase;
-import org.springside.modules.test.category.Smoke;
 
 public class UserAdminFT extends BaseSeleniumTestCase {
 

@@ -10,9 +10,9 @@ import org.junit.Rule;
 import org.junit.rules.TestRule;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.springside.modules.test.selenium.Selenium2;
-import org.springside.modules.test.selenium.SeleniumSnapshotRule;
-import org.springside.modules.test.selenium.WebDriverFactory;
+import org.ycli.testside.dependency.selenium.Selenium2;
+import org.ycli.testside.dependency.selenium.SeleniumSnapshotRule;
+import org.ycli.testside.dependency.selenium.WebDriverFactory;
 
 /**
  * 使用Selenium的功能测试基类.

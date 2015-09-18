@@ -5,7 +5,8 @@
  *******************************************************************************/
 package org.ycli.testside.functional.rest;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -17,11 +18,11 @@ import org.junit.experimental.categories.Category;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
-import org.ycli.testside.data.TaskData;
-import org.ycli.testside.entity.Task;
+import org.ycli.testside.common.mapper.JsonMapper;
+import org.ycli.testside.dependency.category.Smoke;
+import org.ycli.testside.dependency.data.TaskData;
 import org.ycli.testside.functional.BaseFunctionalTestCase;
-import org.springside.modules.mapper.JsonMapper;
-import org.springside.modules.test.category.Smoke;
+import org.ycli.testside.modules.cms.entity.Task;
 
 /**
  * 任务管理的功能测试, 测试页面JavaScript及主要用户故事流程.
