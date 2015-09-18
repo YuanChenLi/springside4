@@ -18,6 +18,8 @@ import org.hibernate.validator.constraints.NotBlank;
 @Table(name = "ycli_task")
 public class Task extends IdEntity {
 
+	private static final long serialVersionUID = 1076796553431226470L;
+	
 	private String title;
 	private String description;
 	private User user;

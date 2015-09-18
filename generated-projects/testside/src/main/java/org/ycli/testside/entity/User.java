@@ -23,6 +23,11 @@ import com.google.common.collect.ImmutableList;
 @Entity
 @Table(name = "ycli_user")
 public class User extends IdEntity {
+	/**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = -4034124371706636330L;
+	
 	private String loginName;
 	private String name;
 	private String plainPassword;
